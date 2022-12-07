@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhutanga Bhante</title>
+</head>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+
+    .row{
+        margin: 10px 0px 10px 10%;
+        border: 2px solid red;
+        padding: 10px;
+       
+        
+    }
+    p{
+        font-size: 22px;
+    }
+    h1{
+        margin: 10px 10%;
+    }
+    
+    a{
+        background-color: rgb(116, 0, 0);
+        padding: 5px 20px;
+        font-size: 25px;
+        color: white;
+        padding: 15px;
+    }
+</style>
+
+<body>
+<h1>১৮ * ১২ ইঞ্চি ছবি-১</h1>
+    <div id="give18">
+    </div>
+
+    <h1>১৮ * ১২ ইঞ্চি ছবি-২</h1>
+    <div id="give18Shisso">
+    </div>
+
+    <h1>৩০ * ২০ ইঞ্চি ছবি-১</h1>
+    <div id="give30">
+    </div>
+
+    <h1>৩০ * ২০ ইঞ্চি ছবি-২</h1>
+    <div id="give30Sadhona">
+    </div>
+    <script>
+        const rootDir = 'https://github.com/siilavanta/Jpg-Formet/raw/master'
+        const rootDirtmnl = 'https://github.com/siilavanta/tmnl/raw/master'
+
+        const give18 = [
+            '08. Bathua_(Mithun)_8.12 1p.jpg',
+            '09. Pingala_(Sangapal and Kamol)_18×12_2p.jpg',
+            '09. Pingala_(Shapla)_18×12_1p.jpg',
+            'GrihiBhaibon Home_18×12_9p.jpg',
+            'Nayona Home_18×12_1p.jpg',
+            'Songkipto Jiboni_18×12_50p.jpg'
+        ]
+        const give18Shisso = [
+            'Sadhona-1st Shisso_18×12_1p.jpg',
+            'Sadhona-2nd Shisso_18×12_1p.jpg',
+            'Sadhona-3rd Shisso_18×12_1p.jpg',
+            'Sadhona-4th Shisso_18×12_1p.jpg',
+            'Sadhona-5th Shisso_18×12_1p.jpg',
+            'Sadhona-6th Shisso_18×12_1p.jpg',
+            'Sadhona-7th Shisso_18×12_1p.jpg',
+            'Sadhona-8th Shisso_18×12_1p.jpg',
+            'Sadhona-9th Shisso_18×12_1p.jpg'
+        ]
+        const give30 = [
+            'Dhutanga Bhante and Shisso_30×20_1p.jpg',
+            'Dipendriyo Bhante_30×20_1p.jpg',
+            'GrihiBhaibon Kutir_30×20_1p.jpg',
+            'Moitrijyoti Bhante_30×20_1p.jpg',
+            'Nayana Kutir_30×20_1p.jpg',
+            'Sadhona-BDASK_30×20_2p.jpg',
+            'Sadhona-MDASK_30×20_1p.jpg',
+            'Sadhona-SASK_30×20_2p.jpg',
+            'Sadhona-Shilok_30×20_1p.jpg',
+            'Sangapal Bhante_30×20_1p.jpg'
+        ]
+
+        const give30Sadhona = [
+            '01.Rajbanabihar_Final_Print_30×20_1p.jpg',
+            '02.Jiptali_Final_Print_30×20_1p.jpg',
+            '03.Gohira_Final_Print_30×20_1p.jpg',
+            '04.Nalbaniya_Final_Print_30×20_1p.jpg',
+            '05.Sobnaichari_Final_Print_ By Sumanta_30×20_1p.jpg',
+            '05.Sobnaichari_Final_Print_By Ripen Ma_30×20_1p.jpg',
+            '06.Bramhapur_Final_Print_30×20_2p.jpg',
+            '07.Mohasatipana_Final_Print_30×20_1p.jpg',
+            '08. Bathua_Final_Print_30×20_1p.jpg',
+            '09. Pingala_Final_Print_30×20_1p.jpg',
+            '10. Pachariya_Final_Print_30×20_1p.jpg'
+        ]
+var exception = ['Ripen Ma', 'Dipendriyo', 'Moitrijyoti', 'Nayana Kutir', 'Sangapal', 'Sadhona-Shilok', 'Sadhona-SASK', ]
+
+let count = 0;
+        function template(elName, arr, sub){
+            //const arr =[]
+            const el = document.getElementById(elName);
+            const temArr = []
+            for(var i  =0; i< arr.length; i++){
+               
+                temArr.push(
+                    `<div class="row">
+                        <h2>ক্রমিক নং ${count + 1}</h2>
+                            <section class="img">
+                                <img src="${rootDirtmnl}/${tmnlSolve(arr[i]) }" alt="" width="90%" height="auto">
+                            </section>
+                            <section class="details">
+                               
+                                <p><b>ছবির নাম :</b> ${arr[i]}</p>
+                                <p><b>সাইজ :</b> ${size(arr[i])}</p>
+                                <p><b>প্রিন্ট করতে হবে : </b>${copyName(arr[i]) } কপি</p>
+                                <p><b>প্রিন্ট টাইপ : </b> ${printType(arr[i])}</p>
+                                <a href="${rootDir+sub}/${arr[i]}">ডাউনলোড করুন</a>
+                            </section>
+                    </div>`
+                )
+                 count++
+            }
+
+            el.innerHTML = temArr.join('')
+
+            function copyName(str){
+
+                const strArr = str.split('_')
+               // console.log(strArr[strArr.length-1])
+                const lastStr = strArr[strArr.length - 1]
+                var lastStrArr = lastStr.split(' ')
+                var uq = lastStrArr[lastStrArr.length - 1]
+                //console.log(uq.replace('p.jpg', ''))
+                return uq.replace('p.jpg', '');
+            }
+
+            var a = '1p~1.jpg'
+            function tmnlSolve(str){
+                return str.replace('p.jpg', 'p~1.jpg')
+                
+            }
+
+            function size(str){
+                var pSize;
+                if(str.includes('30×20')){
+
+                    pSize = "উচ্চতা = ৩০ইঞ্চি; প্রন্থ = ২০ ইঞ্চি"
+                }else if(str.includes('18×12')){
+                    pSize = "উচ্চতা = ১৮ইঞ্চি; প্রন্থ = ১২ ইঞ্চি"
+                }else if(str.includes('8.12')){
+                    pSize = "উচ্চতা = ১৮ইঞ্চি; প্রন্থ = ১২ ইঞ্চি"
+                }
+
+                return pSize;
+            }
+
+            function printType(str){
+                var pType;
+                if (str.includes('30×20')) {
+
+                    pType = "এন্ডকার্ড"
+                } else if (str.includes('18×12')) {
+                    pType = "ইস্টীকার"
+                } else if (str.includes('8.12')) {
+                    pType = "ইস্টীকার"
+                }
+                return pType
+            }
+        }
+
+        template('give18', give18, '/18.12 Final Print Copy')
+        template('give18Shisso', give18Shisso, '/18.12 Final Print Copy/Shisso')
+        template('give30', give30, '/30.20 Final Print Copy')
+        template('give30Sadhona', give30Sadhona, '/30.20 Final Print Copy/Sadhonas Jayga')
+
+       // var link = 'https://github.com/siilavanta/Jpg-Formet/raw/master/18.12%20Final%20Print%20Copy/08.%20Bathua_(Mithun)_8.12%201p.jpg'
+    </script>
+</body>
+</html>
