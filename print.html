@@ -7,6 +7,9 @@
     <title>Dhutanga Bhante</title>
 </head>
 <style>
+    body{
+        margin: auto;
+    }
     table,
     th,
     td {
@@ -14,7 +17,7 @@
     }
 
     .row{
-        margin: 10px 0px 10px 10%;
+        margin: 10px 0px 10px 3%;
         border: 2px solid red;
         padding: 10px;
        
@@ -109,10 +112,10 @@ let count = 0;
             const el = document.getElementById(elName);
             const temArr = []
             for(var i  =0; i< arr.length; i++){
-               
+            //    <h2>ক্রমিক নং ${count + 1}</h2>
                 temArr.push(
                     `<div class="row">
-                        <h2>ক্রমিক নং ${count + 1}</h2>
+                        
                             <section class="img">
                                 <img src="${rootDirtmnl}/${tmnlSolve(arr[i]) }" alt="" width="90%" height="auto">
                             </section>
